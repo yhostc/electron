@@ -6,8 +6,6 @@ const {ipcRenderer, remote} = require('electron')
 const {app, session, getGuestWebContents, ipcMain, BrowserWindow, webContents} = remote
 const {closeWindow} = require('./window-helpers')
 
-const isCI = remote.getGlobal('isCi')
-
 describe('<webview> tag', function () {
   this.timeout(3 * 60 * 1000)
 
@@ -484,9 +482,7 @@ describe('<webview> tag', function () {
             typeofArrayPush: 'number',
             typeofFunctionApply: 'boolean',
             typeofPreloadExecuteJavaScriptProperty: 'number',
-            typeofOpenedWindow: 'object',
-            documentHidden: isCI,
-            documentVisibilityState: isCI ? 'hidden' : 'visible'
+            typeofOpenedWindow: 'object'
           }
         })
         done()
